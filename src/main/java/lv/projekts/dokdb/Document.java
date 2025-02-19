@@ -1,18 +1,21 @@
 package lv.projekts.dokdb;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
 public class Document {
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @SequenceGenerator(name = "user_seq", sequenceName = "user_sequence", allocationSize = 1)
     private Long id;
 
     private String title;
 
     @Column(name = "eventDate")
+    @CreationTimestamp
     private LocalDateTime date;
 
     public Document() {
